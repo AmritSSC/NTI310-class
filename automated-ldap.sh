@@ -72,7 +72,7 @@ echo -n "$newsecret" > /root/ldap_admin_pass
 #restricts ldap_admin_pass to be read only by user
 chmod 600 /root/ldap_admin_pass
 
-#ldiff file, configures root domain name 
+#ldiff file, configures root domain name, assign username, domain component name and location, and password 
 echo -e "dn: olcDatabase = {2}hdb,cn=config
 changetype: modify
 replace: olcSuffix
@@ -91,8 +91,33 @@ olcRootPW: $newhash" > db.ldif
 #modifying root password according to domain specs
 ldapmodify -Y EXTERNAL -H ldapi:/// -f db.ldif
 
-#Auth restriction
-echo "dn: olcDatabase = {1}monitor,cn=config
+#Auth restriction, giving external access to ldapadmin.nti310.local
+echo 'dn: olcDatabase = {1}monitor,cn=config
 changetype: modify
 replace: olcAccess
-olcAccess: {0}to * by dn.base="gidNumber=0+uidNumber=0,cn=peercred,cn=external,cn=auth" read by dn.base="cn=ldapadmin,dc=nti310,dc=local"
+olcAccess: {0}to * by dn.base="gidNumber=0+uidNumber=0, cn=peercred, cn=external, cn=auth" read by dn.base="cn=ldapadmin,dc=nti310,dc=local" read by * none' > monitor.ldif
+
+#Reading in  ldif just created
+ldapmodify -Y EXTERNAL -H ldapi:/// -f monitor.ldif
+
+#Generate ssl certs, will expire in a year
+openssl req -new -x509 -nodes -out /etc/openldap/certs/nti310ldapcert.pem -keyout /etc/openldap/certs/nti310ldapkey.pem -days 365 -subj "/C=US/ST=WA/L=Seattle/O=SCC/OU=IT/CN=nti310.local"
+
+#Change ownership to ldap user from root to make certs available in ldap
+chown -R ldap. /etc/openldap/certs/nti*.pem
+
+#inserting certificates generated above into ldap, giving it certs and key
+#Note: Key file must be executed before cert file
+echo -e "dn: cn=config
+changetype: modify
+replace: olcTLSCertificateKeyFile
+olcTLSCertificateKeyFile: /etc/openldap/certs/nti310ldapkey.pem
+\n
+dn: cn=config
+changetype: modify
+replace: olcTLSCertificateFile
+olcTLSCertificateFile: /etc/openldap/certs/nti310ldapcert.pem" > certs.ldif
+
+
+
+ldapmodify -Y EXTERNAL -H ldapi:/// -f certs.ldif
