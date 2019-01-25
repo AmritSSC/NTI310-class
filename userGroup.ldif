@@ -1,3 +1,4 @@
+# add user groups
 echo -e "# Entry 1: cn=Boyz,ou=Group,dc=nti310,dc=local
 dn: cn=Boyz,ou=Group,dc=nti310,dc=local
 cn: Boyz
@@ -12,4 +13,5 @@ gidnumber: 501
 objectclass: posixGroup
 objectclass: top" > userGroup.ldif
 
+#adding in userGroup.ldif
 ldapadd -x -W -D "cn=ldapadm,dc=nti310,dc=local" -f userGroup.ldif -y /root/ldap_admin_pass
