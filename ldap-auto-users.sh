@@ -190,23 +190,23 @@ uid: aa
 uidnumber: 1001
 userpassword: {SHA}8qEvGH67cIC9darJFgIU5rHkn30=
 \n
-# Entry 2: cn=John Smith,ou=People,dc=nti310,dc=local
-dn: cn=John Smith,ou=People,dc=nti310,dc=local
-cn: John Smith
+# Entry 2: cn=Asterik G,ou=People,dc=nti310,dc=local
+dn: cn=Asterik G,ou=People,dc=nti310,dc=local
+cn: Asterik G
 gidnumber: 500
-givenname: John Smith
-homedirectory: /home/jsmith
+givenname: Asterik G
+homedirectory: /home/ag
 loginshell: /bin/sh
 objectclass: inetOrgPerson
 objectclass: posixAccount
 objectclass: top
-sn: Smith
-uid: jsmith
+sn: G
+uid: ag
 uidnumber: 1002
 userpassword: {SHA}8qEvGH67cIC9darJFgIU5rHkn30=
 \n
 # Entry 3: cn=Arthur B,ou=People,dc=nti310,dc=local
-dn: cn=John Brianson,ou=People,dc=nti310,dc=local
+dn: cn=Arthur B,ou=People,dc=nti310,dc=local
 cn: Arthur B
 gidnumber: 500
 givenname: Arthur B
@@ -220,11 +220,11 @@ uid: AB
 uidnumber: 1003
 userpassword: {SHA}8qEvGH67cIC9darJFgIU5rHkn30=
 \n
-# Entry 4: cn=Eve Z,ou=People,dc=nti310,dc=local
-dn: cn=Eve Z,ou=People,dc=nti310,dc=local
+# Entry 4: cn=Evie Z,ou=People,dc=nti310,dc=local
+dn: cn=Evie Z,ou=People,dc=nti310,dc=local
 cn: Eve Z
 gidnumber: 501
-givenname: Eve Z
+givenname: Evie Z
 homedirectory: /home/ez
 loginshell: /bin/sh
 objectclass: inetOrgPerson
