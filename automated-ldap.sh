@@ -121,3 +121,35 @@ olcTLSCertificateFile: /etc/openldap/certs/nti310ldapcert.pem" > certs.ldif
 
 
 ldapmodify -Y EXTERNAL -H ldapi:/// -f certs.ldif
+
+slaptest -u
+echo "it works"
+
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
+ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
+
+echo -e "dn: cn=nti310,dc=local
+objectClass: top
+objectClass: domain
+\n
+dn: cn=ldapadmin ,dc=nti310,dc=local
+objectClass: organizationalRole
+cn: ldapadm
+description: LDAP Manager
+\n
+dn: ou=People,dc=nti310,dc=local
+objectClass: organizationalUnit
+ou: People
+\n
+dn: ou=Group,dc=nti310,dc=local
+objectClass: organizationalUnit
+ou: Group" >base.ldif
+
+setenforce 0
+
+#Adding in base.ldif just created
+ldapadd -x -W -D "cn=ldapadm,dc=nti310,dc=local" -f base.ldif -y /root/ldap_admin_pass
+
+#restart system after updates
+systemctl restart httpd
