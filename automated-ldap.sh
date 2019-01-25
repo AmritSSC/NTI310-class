@@ -118,17 +118,19 @@ changetype: modify
 replace: olcTLSCertificateFile
 olcTLSCertificateFile: /etc/openldap/certs/nti310ldapcert.pem" > certs.ldif
 
-
-
+#loading certs into ldap
 ldapmodify -Y EXTERNAL -H ldapi:/// -f certs.ldif
 
+#testing ldap is still running
 slaptest -u
 echo "it works"
 
+#adding schemas
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 
+#creating ldap admin user, creating group and people in parallel to admin
 echo -e "dn: dc=nti310,dc=local
 dc: nti310
 objectClass: top
@@ -147,6 +149,7 @@ dn: ou=Group,dc=nti310,dc=local
 objectClass: organizationalUnit
 ou: Group" >base.ldif
 
+#disables SELinux temporarily
 setenforce 0
 
 #Adding in base.ldif just created
