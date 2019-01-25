@@ -129,11 +129,12 @@ ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/cosine.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/nis.ldif
 ldapadd -Y EXTERNAL -H ldapi:/// -f /etc/openldap/schema/inetorgperson.ldif
 
-echo -e "dn: cn=nti310,dc=local
+echo -e "dn: dc=nti310,dc=local
+dc: nti310
 objectClass: top
 objectClass: domain
 \n
-dn: cn=ldapadmin ,dc=nti310,dc=local
+dn: cn=ldapadm,dc=nti310,dc=local
 objectClass: organizationalRole
 cn: ldapadm
 description: LDAP Manager
