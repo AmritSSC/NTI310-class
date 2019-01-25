@@ -1,3 +1,5 @@
+#Create User Accounts Data
+
 echo -e "# Entry 1: cn=Adam A A,ou=People,dc=nti310,dc=local
 dn: cn=Adam A,ou=People,dc=nti310,dc=local
 cn: Adam A
@@ -72,3 +74,6 @@ sn: Y
 uid: AY
 uidnumber: 1005
 userpassword: {SHA}8qEvGH67cIC9darJFgIU5rHkn30=" > userAccount.ldif
+
+#Execute user account creation
+ldapadd -x -W -D "cn=ldapadm,dc=nti310,dc=local" -f userAccount.ldif -y /root/ldap_admin_pass
