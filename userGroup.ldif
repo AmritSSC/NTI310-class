@@ -1,0 +1,15 @@
+echo -e "# Entry 1: cn=Boyz,ou=Group,dc=nti310,dc=local
+dn: cn=Boyz,ou=Group,dc=nti310,dc=local
+cn: Boyz
+gidnumber: 500
+objectclass: posixGroup
+objectclass: top
+\n
+# Entry 2: cn=Girlz,ou=Group,dc=nti310,dc=local
+dn: cn=Girlz,ou=Group,dc=nti310,dc=local
+cn: Girlz
+gidnumber: 501
+objectclass: posixGroup
+objectclass: top" > userGroup.ldif
+
+ldapadd -x -W -D "cn=ldapadm,dc=nti310,dc=local" -f userGroup.ldif -y /root/ldap_admin_pass
