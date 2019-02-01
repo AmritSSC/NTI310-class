@@ -1,3 +1,6 @@
+#!/bin/bash
+
+
 #install nfs client
 apt-get install -y nfs-client:
 
