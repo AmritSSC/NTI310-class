@@ -25,7 +25,8 @@ systemctl start nfs-lock
 systemctl start nfs-idmap
 
 cd /var/nfsshare/
-
+d
+#shares directory with rest of network as a file system
 echo "/var/nfsshare/home_dirs *(rw,sync,no_all_squash)
 /var/nfsshare/devstuff *(rw,sync,no_all_squash)
 /var/nfsshare/testing *(rw,sync,no_all_squash)" >> /etc/exports
@@ -39,8 +40,7 @@ yum -y install net-tools
 #using ifconfig to find your IP address, you will use this for the client.
 
 #From the client( ubuntu machine)
-
-apt-get install nfs-client
+apt-get install nfs-clienthius
 
 showmount -e $ipaddress # whre $ipaddress is the ip of your nfs server
 mkdir /mnt/test
