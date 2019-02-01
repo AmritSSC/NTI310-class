@@ -42,8 +42,6 @@ yum -y install net-tools
 #From the client( ubuntu machine)
 apt-get install nfs-clienthius
 
+ipaddress=ifconfig | grep broadcast | awk '{print $2}' #save ip address, 2nd field in ifconfig
+
 showmount -e $ipaddress # whre $ipaddress is the ip of your nfs server
-mkdir /mnt/test
-echo "10.128.0.4:/var/nfsshare/testing  /mnt/test nfs defaults 0 0" >> /etc/fstab
-mount -a
-*profit*
