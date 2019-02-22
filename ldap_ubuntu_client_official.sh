@@ -51,7 +51,7 @@ ldap-auth-config ldap-auth-config/dblogin boolean false" >> tempfile
 while read line; do echo "$line" | debconf-set-selections; done < tempfile
 
 #echo root ldap password
-echo "pVwokBmu" > /etc/ldap.secret
+echo "********" > /etc/ldap.secret
 
 #read/write only by root
 chown 600 /etc/ldap.secret
