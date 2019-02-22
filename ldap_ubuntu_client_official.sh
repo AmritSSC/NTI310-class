@@ -64,7 +64,7 @@ echo "account sufficient pam_succeed_if.so uid = 0 use_uid quiet" >> /etc/pam.d/
 
 #edit ldap.conf file to point to proper network
 sed -i 's/base dc=example,dc=net/base dc=nti310,dc=local/g' /etc/ldap.conf
-sed -i 's,uri ldapi:///,uri ldap://ldap-g,g' /etc/ldap.conf
+sed -i 's,uri ldapi:///,uri ldap://ldap-g,g' /etc/ldap.conf #can use something different from "/" as seperator
 sed -i 's/rootbinddn cn=manager,dc=example,dc=net/rootbinddn cn=ldapadm,dc=nti310,dc=local/g' /etc/ldap.conf
 
 #restart and enable nscd
