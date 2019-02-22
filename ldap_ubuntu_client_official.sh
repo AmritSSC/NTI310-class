@@ -2,6 +2,7 @@
 # based off of https://www.tecmint.com/configure-ldap-client-to-connect-external-authentication
 # with some additions that make it work, as opposed to not work
 
+#check if password has been read in before, i.e.  if task has been done already
 if [ -e /etc/ldap.secret]; then
   exit 0;
 fi #close if statement
