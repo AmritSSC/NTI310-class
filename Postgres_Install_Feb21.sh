@@ -27,6 +27,5 @@ ALTER ROLE myprojectuser SET default_transaction_isolation TO 'read committed';
 ALTER ROLE myprojectuser SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE myproject TO myprojectuser;" >> /tmp/tempfile
 
-
-sudo -u postgres "psql -f /tmp/tempfile"
-
+#creates database user, grants priviledges as listed in /tmp/tempfile
+sudo -u postgres /bin/psql -f /tmp/tempfile
