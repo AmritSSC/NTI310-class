@@ -33,6 +33,9 @@ yum install -y phpPgAdmin
 sed -i 's/Require local/Require all granted/g'  /etc/httpd/conf.d/phpPgAdmin.conf
 sed -i 's/Deny from all/Allow from all/g'  /etc/httpd/conf.d/phpPgAdmin.conf
 
+sed -i "s/$conf\['servers'\]\[0\]\['host'\] = '';/$conf\['servers'\]\[0\]\['host'\] = 'localhost';/g" /etc/phpPgAdmin/config.inc.php
+sed -i "s/$conf\['owned_only'\] = false;/$conf\['owned_only'\] = true;/g" /etc/phpPgAdmin/config.inc.php
+
 #restart httpd and postgresql
 systemctl reload httpd.service
 systemctl restart postgresql
