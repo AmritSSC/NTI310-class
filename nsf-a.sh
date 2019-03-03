@@ -38,10 +38,6 @@ systemctl restart nfs-server
 yum -y install net-tools
 
 #using ifconfig to find your IP address, you will use this for the client.
-
-#From the client( ubuntu machine)
-apt-get install nfs-clienthius
-
 ipaddress=ifconfig | grep broadcast | awk '{print $2}' #save ip address, 2nd field in ifconfig
 
 showmount -e $ipaddress # whre $ipaddress is the ip of your nfs server
