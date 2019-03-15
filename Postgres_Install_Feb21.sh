@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 #sudo yum install epel-release
 
 #install necessary components:
