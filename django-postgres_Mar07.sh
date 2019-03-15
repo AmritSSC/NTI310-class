@@ -39,4 +39,6 @@ django-admin.py startproject myproject .
 #    }
 #}
 
+#migrate python files
 python manage.py makemigrations
+python manage.py migrate
