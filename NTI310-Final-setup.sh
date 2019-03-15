@@ -11,7 +11,7 @@ gcloud compute instances create rsyslog-server-a \
 --zone us-east1-b \
 #--tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/rsyslog_install_Mar07.sh
 
@@ -24,7 +24,7 @@ gcloud compute instances create postgres-server-a \
 --zone us-east1-b \
 --tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/Install_postgress_phpPgAdmin_Mar14.sh
 
@@ -35,7 +35,7 @@ gcloud compute instances create ldap-server-a \
 --zone us-east1-b \
 --tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/ldap-auto-users_14Mar.sh
       
@@ -47,7 +47,7 @@ gcloud compute instances create nfs-server-a \
 --zone us-east1-b \
 #--tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/nsf-a.sh
       
@@ -58,7 +58,7 @@ gcloud compute instances create django-postgres-servera \
 --zone us-east1-b \
 --tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/django-postgres_Mar07.sh
       
@@ -70,7 +70,7 @@ gcloud compute instances create nsf-ubuntu-client-server-a-1 \
 --zone us-east1-b \
 #--tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/nsf_plus_ubuntu_client_Mar14.sh
       
@@ -82,7 +82,7 @@ gcloud compute instances create nsf-ubuntu-client-server-a-2 \
 --zone us-east1-b \
 #--tags "http-server","https-server" \
 --machine-type f1-micro \
---scopes cloud-platform
+--scopes cloud-platform \
 # get meta data from appropriate script, in this case postgres_install
 --metadata-from-file startup-script=NTI310-class/nsf_plus_ubuntu_client_Mar14.sh
       
