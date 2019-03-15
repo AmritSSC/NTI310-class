@@ -21,6 +21,7 @@ pip install django psycopg2
 #start django project
 django-admin.py startproject myproject .
 
+#we do none of this:
 #replace default database with specific database data:
 #DATABASES = {
 #    'default': {
@@ -37,7 +38,10 @@ django-admin.py startproject myproject .
 #        'HOST': 'postgres-a',
 #        'PORT': '5432',
 #    }
-#}
+#} #~/myproject/myproject/settings.py
+
+#download file settings.py file directly from git
+wget -O ~/myproject/myproject/settings.py https://raw.githubusercontent.com/AmritSSC/NTI310-class/master/settings.py
 
 #migrate python files
 python manage.py makemigrations
