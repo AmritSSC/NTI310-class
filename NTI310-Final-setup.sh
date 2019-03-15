@@ -48,7 +48,7 @@ gcloud compute instances create nfs-server-a \
 --metadata-from-file startup-script=NTI310-class/nsf-a.sh
       
 #5 django
-gcloud compute instances create django-postgres-servera \
+gcloud compute instances create django-postgres-server-a \
 --image-family centos-7 \
 --image-project centos-cloud \
 --zone us-east1-b \
