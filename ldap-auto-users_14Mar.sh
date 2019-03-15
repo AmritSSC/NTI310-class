@@ -63,7 +63,8 @@ echo "phpldapadmin is now up and running"
 echo "we are configuring ldap and ldapadmin"
 
 #Generate, store, and hash new secret password securely
-newsecret=$(slappasswd -g)
+#newsecret=$(slappasswd -g)
+newsecret="P@ssw0rd1"
 newhash=$(slappasswd -s "$newsecret")
 
 #stores only in root/ldap_admin_pass file
