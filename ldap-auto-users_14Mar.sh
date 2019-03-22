@@ -254,4 +254,12 @@ userpassword: {SHA}8qEvGH67cIC9darJFgIU5rHkn30=" > userAccount.ldif
 #Execute user account creation
 ldapadd -x -W -D "cn=ldapadm,dc=nti310,dc=local" -f userAccount.ldif -y /root/ldap_admin_pass
 
+#ryslog client automation (install in client server instances):
+yum update -y  && yum install -y rsyslog
+systemctl start rsyslog
+systemctl enable rsyslog
+cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
+
+echo "*.*  @@rsyslog-1:514" >> /etc/rsyslog.conf
+
 
