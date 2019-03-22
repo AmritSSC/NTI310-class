@@ -61,4 +61,4 @@ systemctl start rsyslog
 systemctl enable rsyslog
 cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
 
-echo "*.*  @@rsyslog-1:514" >> /etc/rsyslog.conf
+echo "*.*  @@rsyslog-server-a:514" >> /etc/rsyslog.conf
