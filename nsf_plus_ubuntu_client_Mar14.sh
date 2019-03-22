@@ -122,11 +122,11 @@ showmount -e $ipaddress # whre $ipaddress is the ip of your nfs server
 ##on client server:
 
 ##make test directory
-#mkdir /mnt/test
+mkdir /mnt/test
 
 ##save ipaddress and data into fstab in /etc
-#echo "10.142.0.22:/var/nfsshare/testing  /mnt/test nfs defaults 0 0" >> /etc/fstab
+echo "10.142.0.22:/var/nfsshare/testing  /mnt/test nfs defaults 0 0" >> /etc/fstab
 
 ##mount file
-#mount -a
+mount -a
 ##*profit*
