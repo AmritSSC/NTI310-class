@@ -73,3 +73,11 @@ sed -i "s/$conf\['owned_only'\] = false;/$conf\['owned_only'\] = true;/g" /etc/p
 #restart httpd and postgresql
 systemctl reload httpd.service
 systemctl restart postgresql
+
+#ryslog client automation (install in client server instances):
+yum update -y  && yum install -y rsyslog
+systemctl start rsyslog
+systemctl enable rsyslog
+cp /etc/rsyslog.conf /etc/rsyslog.conf.bak
+
+echo "*.*  @@rsyslog-1:514" >> /etc/rsyslog.conf
