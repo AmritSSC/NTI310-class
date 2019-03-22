@@ -1,5 +1,3 @@
-#ubuntu client
-
 #!/bin/bash
 # based off of https://www.tecmint.com/configure-ldap-client-to-connect-external-authentication
 # with some additions that make it work, as opposed to not work
